@@ -16,11 +16,17 @@ grad = zeros(size(theta));
 %               You should set J to the cost.
 %               Compute the partial derivatives and set grad to the partial
 %               derivatives of the cost w.r.t. each parameter in theta
+h_theta = sigmoid(X * theta);
+cost = -y .* log(h_theta) - (1 - y) .* log(1 - h_theta);
+J = 1 ./ m * sum(cost);
+JRegTerm = lambda / (2 * m) * sum(theta(2 : size(theta)) .^ 2);
+J = J + JRegTerm;
 
-
-
-
-
+diff = repmat((h_theta - y), 1, size(X)(2));
+grad = (1 ./ m .* sum( diff .* X))';
+gradZero = grad(1);
+grad = grad .+ lambda / m .* theta; % Adding Regularzation
+grad(1) = gradZero; % recover grad(0) since it shouldn't adding reg for theta(0)
 
 % =============================================================
 

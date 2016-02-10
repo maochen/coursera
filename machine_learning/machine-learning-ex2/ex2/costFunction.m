@@ -21,10 +21,12 @@ grad = zeros(size(theta));
 %
 
 h_theta = sigmoid(X * theta);
+cost = -y .* log(h_theta) - (1 - y) .* log(1 - h_theta);
+J = 1 ./ m * sum(cost);
+
 diff = repmat((h_theta - y), 1, size(X)(2));
 grad = (1 ./ m .* sum( diff .* X))';
-cost = -y .* log(h_theta) - (1 - y) .* log(1 - h_theta);
-        J = 1 ./ m * sum(cost);
+
 
 % =============================================================
 end
