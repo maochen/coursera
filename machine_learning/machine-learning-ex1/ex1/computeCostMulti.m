@@ -12,15 +12,9 @@ J = 0;
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
-if(size(theta)(1)==1 && size(theta)(2)~=1),
-	theta=theta';
-end;
-
 pred=X*theta;
 sqrErrs=(pred-y).^2;
 J=1/(2*m)*sum(sqrErrs);
-
-
 % =========================================================================
 
 end

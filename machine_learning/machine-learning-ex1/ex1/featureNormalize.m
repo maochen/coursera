@@ -25,11 +25,12 @@ sigma = zeros(1, size(X, 2));
 %
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
+mu = sum(X)/size(X, 1);
+mu = repmat(mu, size(X, 1), 1);
+sigma = std(X);
+sigma = repmat(sigma, size(X, 1), 1);
 
-mu=sum(X)/size(X)(1);
-sigma=std(X);
-
-X_norm=(X-mu)./sigma
+X_norm = (X - mu)./sigma;
 
 % ============================================================
 

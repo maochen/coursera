@@ -8,8 +8,6 @@ function [J, grad] = costFunctionReg(theta, X, y, lambda)
 m = length(y); % number of training examples
 
 % You need to return the following variables correctly 
-J = 0;
-grad = zeros(size(theta));
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost of a particular choice of theta.
@@ -22,10 +20,11 @@ J = 1 ./ m * sum(cost);
 JRegTerm = lambda / (2 * m) * sum(theta(2 : size(theta)) .^ 2);
 J = J + JRegTerm;
 
-diff = repmat((h_theta - y), 1, size(X)(2));
+sizeX = size(X);
+diff = repmat((h_theta - y), 1, sizeX(2));
 grad = (1 ./ m .* sum( diff .* X))';
 gradZero = grad(1);
-grad = grad .+ lambda / m .* theta; % Adding Regularzation
+grad = grad + lambda / m .* theta; % Adding Regularzation
 grad(1) = gradZero; % recover grad(0) since it shouldn't adding reg for theta(0)
 
 % =============================================================
