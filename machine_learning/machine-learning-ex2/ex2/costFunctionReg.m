@@ -17,7 +17,7 @@ m = length(y); % number of training examples
 h_theta = sigmoid(X * theta);
 cost = -y .* log(h_theta) - (1 - y) .* log(1 - h_theta);
 J = 1 ./ m * sum(cost);
-JRegTerm = lambda / (2 * m) * sum(theta(2 : size(theta)) .^ 2);
+JRegTerm = lambda / (2 * m) * sum(theta(2 : end) .^ 2);
 J = J + JRegTerm;
 
 sizeX = size(X);
