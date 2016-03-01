@@ -22,7 +22,9 @@ h_theta = X * theta;
 diff = h_theta - y;
 reg = lambda / (2 * m) * sum(theta(2:end) .^2);
 J = 1 / (2 * m) * sum(diff .^2) + reg;
-grad = 1/m .* sum(repmat(diff, 1, size(X,2)) .* X) + lambda / m * theta' ;
+
+grad = 1/m .* X' * diff;
+grad(2:end) = grad(2:end) + lambda / m .* theta(2:end) ;
 % =========================================================================
 grad = grad(:);
 

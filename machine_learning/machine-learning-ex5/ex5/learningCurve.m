@@ -58,12 +58,10 @@ for i = 1:m
     subset_y = y(1:i);
     theta = trainLinearReg(subset_x, subset_y, lambda);
     
-    err_train(i) = linearRegCostFunction(subset_x, subset_y, theta, 0);
-    err_val(i) = linearRegCostFunction(Xval, yval, theta, 0);
+    error_train(i) = linearRegCostFunction(subset_x, subset_y, theta, 0);
+    error_val(i) = linearRegCostFunction(Xval, yval, theta, 0);
 end
 
 % -------------------------------------------------------------
-
 % =========================================================================
-
 end
